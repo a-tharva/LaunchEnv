@@ -1,5 +1,5 @@
 # LaunchEnv
-v0.0.2
+v0.0.1
 
 ## About
 Command line application created in python to execute your programs or scripts in one command. 
