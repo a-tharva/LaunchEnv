@@ -5,6 +5,9 @@
 #| |___| (_| | |_| | | | | (__| | | | |____| | | \ V /
 #|______\__,_|\__,_|_| |_|\___|_| |_|______|_| |_|\_/
 
+# Path for data files
+PATH = 'C:\\launchenv_data'
+
 # For message box
 def border_msg(msg):
     row = len(msg)

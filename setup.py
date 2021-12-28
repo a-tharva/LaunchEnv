@@ -3,7 +3,7 @@ import codecs
 import os
 
 VERSION = '0.0.1'
-DESCRIPTION = 'Launch'
+DESCRIPTION = 'Launch all your programs and scripts with one command'
 
 from pathlib import Path
 this_directory = Path(__file__).parent
@@ -26,7 +26,7 @@ setup(
     author="Atharva Bhandvalkar",
     author_email="<atharv.bhandvalkar@gmail.com>",
     license='MIT',
-    url='https://github.com/a-tharva/launchenv',
+    url='https://github.com/a-tharva/LaunchEnv',
     description=DESCRIPTION,
     long_description=long_description + '\n\n' + open('CHANGELOG.txt').read(),
     long_description_content_type='text/markdown',

@@ -4,21 +4,20 @@ import subprocess
 import json
 
 from launch.environment.environment import *
-from launch.utils.utils import border_msg, logo
+from launch.utils.utils import PATH, border_msg, logo
 
 
 #CURRENT_PATH = os.path.abspath(__file__)    
 #CURRENT_PATH = os.path.split(CURRENT_PATH)[0]    
 #PATH = 'data\'
 
-CURRENT_PATH = 'C:\\launchenv_data'
+CURRENT_PATH = PATH
     
 def initalise(build=None, add=None, show_list=None, delete=None, remove=None, env=None):
     
-    logo()
-    
     # Create new work environment
     if build:
+        logo()
         print(f'Launch file with name {build} will be created...')
         filename = f'{CURRENT_PATH}\{build}'
         create_json(filename)
@@ -27,7 +26,10 @@ def initalise(build=None, add=None, show_list=None, delete=None, remove=None, en
     if add:
         filename = f'{CURRENT_PATH}\{add}'
         program = input('Which program to add this environment: ')
-        add_json(filename, program)
+        try:
+            add_json(filename, program)
+        except Exception as Error:
+            print(Error)
         
     # Show all programs in the environment
     if show_list:
@@ -55,6 +57,7 @@ def initalise(build=None, add=None, show_list=None, delete=None, remove=None, en
     
     # Run environment
     if env:
+        logo()
         filename = f'{CURRENT_PATH}\{env}'
         lst = read_json(filename)
         

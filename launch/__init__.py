@@ -1,6 +1,7 @@
 import os
+from launch.utils.utils import PATH
 
-if not os.path.exists('C:\launchenv_data'):
-    os.makedirs('C:\launchenv_data')
+if not os.path.exists(PATH):
+    os.makedirs(PATH)
 else:
     pass

@@ -25,6 +25,7 @@ def add_json(filename, program):
     lst = []
     with open (filename + '.json', 'r+') as f:
         lst = json.load(f)
+        lst = lst.copy()
         lst.append(program)
         f.seek(0)
         json.dump(lst, f)
@@ -34,6 +35,7 @@ def remove_element_json(filename, item):
     lst = []
     with open (filename + '.json') as f:
         lst = json.load(f)
+        lst = lst.copy()
         
         # Search for program in the list
         l = [i for i in lst if item in i]
