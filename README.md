@@ -2,7 +2,9 @@
 v0.0.1
 
 ## About
-Command line application created in python to execute your programs or scripts in one command. 
+Command line application created in python to execute your programs or scripts in one command.
+- Note : Not tested for linux. 
+- PATH for data storage is given in /launch/utils/utils.py 
 
 ## Installation
 From PyPI
@@ -47,7 +49,7 @@ optional arguments:
 ## Development
 Still working on this project.<br>
 - The Script functionality is currently not provided as it creates some issues, will add that in future.<br>
-- Next version will ask location to store the launch data.<br> 
+- Next version will ask path to store the launch data.<br> 
 <!-- -->
 
 ## Contributing
