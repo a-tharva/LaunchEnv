@@ -23,6 +23,15 @@ python3 setup.py install
 # Run setup
 launch
 ```
+## Use
+```
+>launch -build workspace_name
+  
+>launch -a workspace_name
+ Which program to add this environment: "D:\foo\foo.exe" # or Drag exe to window the path will appear 
+  
+>launch -env workspace_name
+```
 
 ## Usage
 ```
@@ -44,6 +53,7 @@ optional arguments:
   -delete , --delete   Remove program from given work environment
   -remove , --remove   Remove the work environment
   -env , --env         Run environment
+  
 ```
 
 ## Development
