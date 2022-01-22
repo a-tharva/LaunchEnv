@@ -1,18 +1,14 @@
-import argparse
 import os
+import argparse
 import subprocess
-import json
 
-from launch.environment.environment import *
+import launch.environment.environment as lee
 from launch.utils.utils import PATH, border_msg, logo
 
 
-#CURRENT_PATH = os.path.abspath(__file__)    
-#CURRENT_PATH = os.path.split(CURRENT_PATH)[0]    
-#PATH = 'data\'
-
 CURRENT_PATH = PATH
-    
+
+# Initalise function to call other functions based on arguments
 def initalise(build=None, add=None, show_list=None, delete=None, remove=None, env=None):
     
     # Create new work environment
@@ -20,21 +16,21 @@ def initalise(build=None, add=None, show_list=None, delete=None, remove=None, en
         logo()
         print(f'Launch file with name {build} will be created...')
         filename = f'{CURRENT_PATH}\{build}'
-        create_json(filename)
+        lee.create_json(filename)
     
     # Add program to existing work environment
     if add:
         filename = f'{CURRENT_PATH}\{add}'
         program = input('Which program to add this environment: ')
         try:
-            add_json(filename, program)
+            lee.add_json(filename, program)
         except Exception as Error:
             print(Error)
         
     # Show all programs in the environment
     if show_list:
         filename = f'{CURRENT_PATH}\{show_list}'
-        lst = read_json(filename)
+        lst = lee.read_json(filename)
         print(f'Workspace {show_list}')
         for i in lst:
             print(i)
@@ -43,7 +39,7 @@ def initalise(build=None, add=None, show_list=None, delete=None, remove=None, en
     if delete:
         filename = f'{CURRENT_PATH}\{delete}'
         item = input('Enter program name to delete from environment: ')
-        remove_element_json(filename, item)
+        lee.remove_element_json(filename, item)
         
     # Remove the work environment
     if remove:
@@ -59,12 +55,18 @@ def initalise(build=None, add=None, show_list=None, delete=None, remove=None, en
     if env:
         logo()
         filename = f'{CURRENT_PATH}\{env}'
-        lst = read_json(filename)
-        
-        print(f'Launching workspace - {env}')
-        for _ in lst:
-            subprocess.Popen(_)
-            print(f'Executed {_}')
+        try:
+            lst = lee.read_json(filename)
+            print(f'Launching workspace - {env}')
+            for _ in lst:
+                subprocess.Popen(_)
+                print(f'Executed {_}')
+        except FileNotFoundError:
+            print(f'No Workspace named {env} found')
+            print('Here is list of available workspace:')
+            for _ in os.listdir(CURRENT_PATH):
+                if _.endswith('.json'):
+                    print(' ',_.replace('.json',''))
         
         
 def main():
