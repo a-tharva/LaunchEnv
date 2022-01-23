@@ -1,95 +1,76 @@
 import os
-import argparse
 import subprocess
 
-import launch.environment.environment as lee
-from launch.utils.utils import PATH, border_msg, logo
-
+from .environment.environment import data
+from .utils.utils import PATH, logo
 
 CURRENT_PATH = PATH
 
-# Initalise function to call other functions based on arguments
-def initalise(build=None, add=None, show_list=None, delete=None, remove=None, env=None):
+class handle:
     
-    # Create new work environment
-    if build:
-        logo()
-        print(f'Launch file with name {build} will be created...')
-        filename = f'{CURRENT_PATH}\{build}'
-        lee.create_json(filename)
-    
-    # Add program to existing work environment
-    if add:
-        filename = f'{CURRENT_PATH}\{add}'
-        program = input('Which program to add this environment: ')
+    # Add to launch file
+    def add(filename):
+        name = input('Enter name of program to add this environment: ')
+        path = input('Enter path of program executable: ')
         try:
-            lee.add_json(filename, program)
+            data.add_json(filename, name, path)
         except Exception as Error:
             print(Error)
-        
-    # Show all programs in the environment
-    if show_list:
-        filename = f'{CURRENT_PATH}\{show_list}'
-        lst = lee.read_json(filename)
-        print(f'Workspace {show_list}')
-        for i in lst:
-            print(i)
-        
-    # Delete program from given environment
-    if delete:
-        filename = f'{CURRENT_PATH}\{delete}'
-        item = input('Enter program name to delete from environment: ')
-        lee.remove_element_json(filename, item)
-        
-    # Remove the work environment
-    if remove:
-        filename = f'{CURRENT_PATH}\{remove}' + '.json'
+            
+    # Build launch file
+    def build(filename, build):
+        print(f'Launch file with name {build} will be created...')
+        data.create_json(filename)
+            
+    # launch function
+    def launch(filename, env):
+        try:
+            dic = data.read_json(filename)
+            print(f'Launching workspace - {env}')
+            logo()
+            handle.run(dic)
+        except FileNotFoundError:
+            print(f'No Workspace named {env} found')
+            handle.ls()
+    
+    # Delete launch file
+    def purge(filename, purge):
         if os.path.exists(filename):
-            verify = input(f'Confirm to delete {remove} environment [y/n]: ')
+            verify = input(f'Confirm to delete {purge} environment [y/n]: ')
             if verify == 'y':
                 os.remove(filename)
         else:
-            print(f'No environment named {remove}.')
-    
-    # Run environment
-    if env:
-        logo()
-        filename = f'{CURRENT_PATH}\{env}'
+            print(f'No environment named {purge}.')
+            
+    # Remove element from launch file 
+    def remove_element(filename):
+        item = input('Enter program name to delete from environment: ')
+        data.remove_element_json(filename, item)
+        
+    # List all elements from launch file
+    def show_lst(filename, show_list):
         try:
-            lst = lee.read_json(filename)
-            print(f'Launching workspace - {env}')
-            for _ in lst:
-                subprocess.Popen(_)
-                print(f'Executed {_}')
+            dic = data.read_json(filename)
+            print(f'Workspace {show_list}')
+            for _ in dic:
+                print(f' {_}: {dic[_]}')
         except FileNotFoundError:
-            print(f'No Workspace named {env} found')
-            print('Here is list of available workspace:')
-            for _ in os.listdir(CURRENT_PATH):
-                if _.endswith('.json'):
-                    print(' ',_.replace('.json',''))
-        
-        
-def main():
-    # Parser arguments
-    parser = argparse.ArgumentParser(description='Run environment')
-    parser.add_argument('-build', '--build', help='Create new work environment/workspace', 
-                         type=str, metavar='')
-    parser.add_argument('-a', '--add', help='Add program to existing work environment', 
-                        type=str, metavar='')
-    parser.add_argument('-s', '--show', help='Show all program in given work environment', 
-                        type=str, metavar='')
-    parser.add_argument('-delete', '--delete', help='Remove program from given work environment', 
-                        type=str, metavar='')
-    parser.add_argument('-remove', '--remove', help='Remove the work environment', 
-                        type=str, metavar='')
-    parser.add_argument('-env', '--env', help='Run environment', 
-                        type=str, metavar='')
-    args = parser.parse_args()
-    
-    initalise(build=args.build, add=args.add, 
-              show_list=args.show, delete=args.delete, 
-              remove=args.remove, env=args.env)
-    
-    
-if __name__ == '__main__':
-    main()
+            print(f'No Workspace named {show_list} found')
+            
+    # List all launch environments
+    @staticmethod
+    def ls():
+        print('Here is list of available workspace:')
+        for _ in os.listdir(CURRENT_PATH):
+            if _.endswith('.json'):
+                print(' ',_.replace('.json',''))
+            
+    # Run programs from launch file
+    @staticmethod                
+    def run(dic):
+        for _ in dic:
+            try:
+                subprocess.Popen(dic[_])
+                print(f'Executed {_}')
+            except Exception:
+                print(f'Could not open {_}:{dic[_]}. Check if path/file_name is correct')

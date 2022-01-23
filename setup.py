@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import codecs
 import os
 
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 DESCRIPTION = 'Launch all your programs and scripts with one command'
 
 from pathlib import Path
@@ -35,7 +35,7 @@ setup(
     keywords=['python'],
     entry_points={
         'console_scripts': [
-            'launch = launch.launch:main',
+            'launch = launch.main:main',
         ],
     },
     classifiers=classifiers,
