@@ -10,37 +10,44 @@ CURRENT_PATH = PATH
 # Initalise function to call other functions based on arguments
 def initalise(build=None, add=None, show_list=None, remove=None, purge=None, env=None, ls=False):
     
-    # Create new work environment
+    
     if build:
+        # Create new work environment
         filename = f'{CURRENT_PATH}\{build}'
         handle.build(filename, build)
     
-    # Add program to existing work environment
+    
     if add:
+        # Add program to existing work environment
         filename = f'{CURRENT_PATH}\{add}'
         handle.add(filename)
         
-    # Show all programs in the environment
+    
     if show_list:
+        # Show all programs in the environment
         filename = f'{CURRENT_PATH}\{show_list}'
         handle.show_lst(filename, show_list)
         
-    # Delete program from given environment
+    
     if remove:
+        # Delete program from given environment
         filename = f'{CURRENT_PATH}\{remove}'
         handle.remove_element(filename)
         
-    # Remove the work environment
+    
     if purge:
+        # Remove the work environment
         filename = f'{CURRENT_PATH}\{purge}' + '.json'
         handle.purge(filename, purge)
     
-    # Run environment
+    
     if env:
+        # Run environment
         filename = f'{CURRENT_PATH}\{env}'
         handle.launch(filename, env)
         
     if ls:
+        # List all availabel work environments
         handle.ls()
         
 def main():

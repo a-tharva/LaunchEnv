@@ -7,9 +7,11 @@ from .utils.utils import PATH, logo
 CURRENT_PATH = PATH
 
 class handle:
+    """Logic for launch"""
     
-    # Add to launch file
+    
     def add(filename):
+        # Add to launch file
         name = input('Enter name of program to add this environment: ')
         path = input('Enter path of program executable: ')
         try:
@@ -17,13 +19,15 @@ class handle:
         except Exception as Error:
             print(Error)
             
-    # Build launch file
+            
     def build(filename, build):
+        # Build launch file
         print(f'Launch file with name {build} will be created...')
         data.create_json(filename)
             
-    # launch function
+            
     def launch(filename, env):
+        # launch function
         try:
             dic = data.read_json(filename)
             print(f'Launching workspace - {env}')
@@ -33,22 +37,25 @@ class handle:
             print(f'No Workspace named {env} found')
             handle.ls()
     
-    # Delete launch file
+    
     def purge(filename, purge):
+        # Delete launch file
         if os.path.exists(filename):
             verify = input(f'Confirm to delete {purge} environment [y/n]: ')
             if verify == 'y':
                 os.remove(filename)
         else:
             print(f'No environment named {purge}.')
-            
-    # Remove element from launch file 
+    
+    
     def remove_element(filename):
+        # Remove element from launch file 
         item = input('Enter program name to delete from environment: ')
         data.remove_element_json(filename, item)
-        
-    # List all elements from launch file
+    
+    
     def show_lst(filename, show_list):
+        # List all elements from launch file
         try:
             dic = data.read_json(filename)
             print(f'Workspace {show_list}')
@@ -57,17 +64,19 @@ class handle:
         except FileNotFoundError:
             print(f'No Workspace named {show_list} found')
             
-    # List all launch environments
+    
     @staticmethod
     def ls():
+        # List all launch environments
         print('Here is list of available workspace:')
         for _ in os.listdir(CURRENT_PATH):
             if _.endswith('.json'):
                 print(' ',_.replace('.json',''))
             
-    # Run programs from launch file
+    
     @staticmethod                
     def run(dic):
+        # Run programs from launch file
         for _ in dic:
             try:
                 subprocess.Popen(dic[_])

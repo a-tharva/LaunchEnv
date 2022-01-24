@@ -2,16 +2,18 @@ import os
 import json
 
 class data:
-    
+    """Logic for launch file data """
 
-    # Read json and return dictionary
+    
     def read_json(filename):
+        # Read json and return dictionary
         with open (filename + '.json', 'r') as f:
             dic = json.load(f)
             return dic
 
-    # create json file
+    
     def create_json(filename):
+        # create json file
         if os.path.exists(f'{filename}.json'):
             print('File already exist.')
         else:
@@ -19,8 +21,9 @@ class data:
             with open(filename + '.json', 'a+') as f:
                 json.dump(dic, f)
 
-    # Add program to json file
+    
     def add_json(filename, key, value):
+        # Add program to json file
         with open (filename + '.json', 'r+') as f:
             dic = json.load(f)
             dic = dic.copy()
@@ -28,8 +31,9 @@ class data:
             f.seek(0)
             json.dump(dic, f, indent=2)
 
-    # Remove program from json file
+    
     def remove_element_json(filename, item_key):
+        # Remove program from json file
         with open (filename + '.json') as f:
             dic = json.load(f)
             dic = dic.copy()
