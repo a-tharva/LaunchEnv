@@ -19,7 +19,7 @@ sudo pip3 install launchenv
 From github
 ```
 # Clone project
-git clone https://github.com/a-tharva/LaunchEnv && cd fort
+git clone https://github.com/a-tharva/LaunchEnv && cd LaunchEnv
 
 # Installation
 python3 setup.py install
@@ -29,12 +29,13 @@ launch
 ```
 ## Use
 ```
->launch -build workspace_name
+>launch -build <workspace_name>
   
->launch -a workspace_name
- Which program to add this environment: "D:\foo\foo.exe" # or Drag exe to window the path will appear 
+>launch -a <workspace_name>
+Enter name of program to add this environment: foo
+Enter path of program executable: "D:\foo\foo.exe"   or   Drag exe to window the path will appear
   
->launch -env workspace_name
+>launch -env <workspace_name>
 ```
 
 ## Usage
