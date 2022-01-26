@@ -2,7 +2,8 @@
 v0.0.2
 
 ## About
-Command line application created in python to execute your programs or scripts in one command.
+Command line application created in python to execute your programs or scripts in one command.<br>
+Creates launch file with executables and scripts to run them in a single command.
 - Note : Not tested for linux. 
 - PATH for data storage is given in /launch/utils/utils.py 
 
@@ -75,9 +76,9 @@ If you have a suggestion that would make this better, please fork the repo and c
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+2. Create your Feature Branch (`git checkout -b feature/Feature`)
+3. Commit your Changes (`git commit -m 'Add some Feature'`)
+4. Push to the Branch (`git push origin feature/Feature`)
 5. Open a Pull Request
 
 
