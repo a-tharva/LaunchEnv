@@ -1,5 +1,5 @@
 # LaunchEnv
-v0.0.1
+v0.0.2
 
 ## About
 Command line application created in python to execute your programs or scripts in one command.
@@ -10,6 +10,10 @@ Command line application created in python to execute your programs or scripts i
 From PyPI
 ```
 pip install launchenv
+```
+- For linux
+```
+sudo pip3 install launchenv
 ```
 
 From github
@@ -41,7 +45,7 @@ launch
 | |__| (_| | |_| | | | | (__| | | | |___| | | \ V /
 |_____\__,_|\__,_|_| |_|\___|_| |_|_____|_| |_|\_/
 
-launch [-h] [-build] [-a] [-s] [-delete] [-remove] [-env]
+launch [-h] [-build] [-a] [-s] [-remove] [-purge] [-env] [-ls]
 
 Run environment
 
@@ -50,9 +54,10 @@ optional arguments:
   -build , --build     Create new work environment/workspace
   -a , --add           Add program to existing work environment
   -s , --show          Show all program in given work environment
-  -delete , --delete   Remove program from given work environment
-  -remove , --remove   Remove the work environment
+  -remove , --remove   Remove program from given work environment
+  -purge , --purge     delete the work environment file
   -env , --env         Run environment
+  -ls, --list          List all available work environments
   
 ```
 
