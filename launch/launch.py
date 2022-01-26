@@ -23,7 +23,10 @@ class handle:
     def build(filename, build):
         # Build launch file
         print(f'Launch file with name {build} will be created...')
-        data.create_json(filename)
+        if os.path.exists(f'{filename}.json'):
+            print('File already exist. Try another name')
+        else:
+            data.create_json(filename)
             
             
     def launch(filename, env):
@@ -63,7 +66,7 @@ class handle:
                 print(f' {_}: {dic[_]}')
         except FileNotFoundError:
             print(f'No Workspace named {show_list} found')
-            
+
     
     @staticmethod
     def ls():

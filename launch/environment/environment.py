@@ -1,4 +1,3 @@
-import os
 import json
 
 class data:
@@ -14,12 +13,9 @@ class data:
     
     def create_json(filename):
         # create json file
-        if os.path.exists(f'{filename}.json'):
-            print('File already exist.')
-        else:
-            dic = {}
-            with open(filename + '.json', 'a+') as f:
-                json.dump(dic, f)
+        dic = {}
+        with open(filename + '.json', 'a+') as f:
+            json.dump(dic, f)
 
     
     def add_json(filename, key, value):
