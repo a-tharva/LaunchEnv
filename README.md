@@ -59,7 +59,6 @@ optional arguments:
   -purge , --purge     delete the work environment file
   -env , --env         Run environment
   -ls, --list          List all available work environments
-  
 ```
 
 ## Development
