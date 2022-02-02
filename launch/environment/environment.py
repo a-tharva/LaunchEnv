@@ -4,21 +4,21 @@ class data:
     """Logic for launch file data """
 
     
-    def read_json(filename):
+    def read_(filename):
         # Read json and return dictionary
         with open (filename + '.json', 'r') as f:
             dic = json.load(f)
             return dic
 
     
-    def create_json(filename):
+    def create_(filename):
         # create json file
         dic = {}
         with open(filename + '.json', 'a+') as f:
             json.dump(dic, f)
 
     
-    def add_json(filename, key, value):
+    def add_(filename, key, value):
         # Add program to json file
         with open (filename + '.json', 'r+') as f:
             dic = json.load(f)
@@ -28,7 +28,7 @@ class data:
             json.dump(dic, f, indent=2)
 
     
-    def remove_element_json(filename, item_key):
+    def remove_element_(filename, item_key):
         # Remove program from json file
         with open (filename + '.json') as f:
             dic = json.load(f)
