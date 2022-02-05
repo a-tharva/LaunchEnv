@@ -1,9 +1,8 @@
 # LaunchEnv
-v0.0.2
+v0.0.3
 
 ## About
-Command line application created in python to execute your programs or scripts in one command.
-- Note : Not tested for linux. 
+Command line application created in python to execute your programs or scripts in one command. <br> 
 - PATH for data storage is given in /launch/utils/utils.py 
 
 ## Installation
@@ -34,6 +33,16 @@ launch
 >launch -a <workspace_name>
 Enter name of program to add this environment: foo
 Enter path of program executable: "D:\foo\foo.exe"   or   Drag exe to window the path will appear
+
+For script -
+>launch -a <workspace_name>
+Enter name of program to add this environment: foo
+Enter path of program executable: python "D:\foo\foo.exe"   or   python Drag exe to window the path will appear
+  
+For advance use -
+>launch -a <workspace_name>
+Enter name of program to add this environment: opera incognito
+Enter path of program executable: "D:\foo\opera.exe" -incognito  or   Drag exe to window the path will appear -incognito
   
 >launch -env <workspace_name>
 ```
@@ -63,7 +72,7 @@ optional arguments:
 
 ## Development
 Still working on this project.<br>
-- The Script functionality is currently not provided as it creates some issues, will add that in future.<br>
+- The Script functionality is provided but it does not open new terminal window.<br>
 - Next version will ask path to store the launch data.<br> 
 <!-- -->
 
