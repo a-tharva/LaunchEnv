@@ -9,3 +9,4 @@ build/
 
 # txt
 *.txt
+!CHANGELOG.txt

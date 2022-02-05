@@ -1,0 +1,15 @@
+Change Log
+==========
+
+0.0.1 (28/12/2021)
+-------------------
+- First Release
+
+0.0.2 (26/1/2022)
+-------------------
+- Changed structure
+
+0.0.3 
+-------------------
+- Added function for different os
+- Changed file path for launch files 
