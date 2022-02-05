@@ -1,15 +1,14 @@
 import os
 import argparse
-
 from .launch import handle
 from .utils.utils import PATH
 
 
-CURRENT_PATH = PATH
+CURRENT_PATH = PATH()
 
-# Initalise function to call other functions based on arguments
-def initalise(build=None, add=None, show_list=None, remove=None, purge=None, env=None, ls=False):
-    
+
+def initalise(build=None, add=False, show_list=None, remove=None, purge=None, env=None, ls=False):
+    # Initalise function to call other functions based on arguments
     
     if build:
         # Create new work environment
@@ -50,6 +49,7 @@ def initalise(build=None, add=None, show_list=None, remove=None, purge=None, env
         # List all availabel work environments
         handle.ls()
         
+        
 def main():
     # Parser arguments
     parser = argparse.ArgumentParser(description='Run environment')
@@ -69,9 +69,13 @@ def main():
                         action='store_true')
     args = parser.parse_args()
     
-    initalise(build=args.build, add=args.add, 
-              show_list=args.show, remove=args.remove, 
-              purge=args.purge, env=args.env , ls=args.list)
+    initalise(build=args.build, 
+              add=args.add, 
+              show_list=args.show, 
+              remove=args.remove, 
+              purge=args.purge, 
+              env=args.env, 
+              ls=args.list)
     
     
 if __name__ == '__main__':

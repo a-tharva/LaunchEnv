@@ -1,6 +1,15 @@
+from sys import platform
 
-# Path for data files
-PATH = 'C:\\launchenv_data'
+def PATH():
+    # To check current system
+    if platform == 'win32':
+        path = 'C:\\launchfiles'
+    elif platform == 'linux':
+        path = '/home/launchfiles'
+    else:
+        path = 'C:\\launchfiles'
+        
+    return path
 
 # For message box
 def border_msg(msg):
@@ -17,34 +26,5 @@ def logo():
 | |   / _` | | | | '_ \ / __| '_ \|  _| | '_ \ \ / /
 | |__| (_| | |_| | | | | (__| | | | |___| | | \ V /
 |_____\__,_|\__,_|_| |_|\___|_| |_|_____|_| |_|\_/
+V0.0.3
 ''')
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-# _                            _     ______
-#| |                          | |   |  ____|
-#| |     __ _ _   _ _ __   ___| |__ | |__   _ ____   __
-#| |    / _` | | | | '_ \ / __| '_ \|  __| | '_ \ \ / /
-#| |___| (_| | |_| | | | | (__| | | | |____| | | \ V /
-#|______\__,_|\__,_|_| |_|\___|_| |_|______|_| |_|\_/

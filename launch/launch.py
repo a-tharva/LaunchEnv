@@ -4,7 +4,7 @@ import subprocess
 from .environment.environment import data
 from .utils.utils import PATH, logo
 
-CURRENT_PATH = PATH
+CURRENT_PATH = PATH()
 
 class handle:
     """Logic for launch"""
@@ -15,7 +15,7 @@ class handle:
         name = input('Enter name of program to add this environment: ')
         path = input('Enter path of program executable: ')
         try:
-            data.add_json(filename, name, path)
+            data.add_(filename, name, path)
         except Exception as Error:
             print(Error)
             
@@ -26,13 +26,14 @@ class handle:
         if os.path.exists(f'{filename}.json'):
             print('File already exist. Try another name')
         else:
-            data.create_json(filename)
+            data.create_(filename)
+        print(f'Launch file {build} created')
             
             
     def launch(filename, env):
         # launch function
         try:
-            dic = data.read_json(filename)
+            dic = data.read_(filename)
             print(f'Launching workspace - {env}')
             logo()
             handle.run(dic)
@@ -54,13 +55,13 @@ class handle:
     def remove_element(filename):
         # Remove element from launch file 
         item = input('Enter program name to delete from environment: ')
-        data.remove_element_json(filename, item)
+        data.remove_element_(filename, item)
     
     
     def show_lst(filename, show_list):
         # List all elements from launch file
         try:
-            dic = data.read_json(filename)
+            dic = data.read_(filename)
             print(f'Workspace {show_list}')
             for _ in dic:
                 print(f' {_}: {dic[_]}')
