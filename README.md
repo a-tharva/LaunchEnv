@@ -37,7 +37,13 @@ Enter path of program executable: "D:\foo\foo.exe"   or   Drag exe to window the
 For script -
 >launch -a <workspace_name>
 Enter name of program to add this environment: foo
-Enter path of program executable: python "D:\foo\foo.exe"   or   python Drag exe to window the path will appear
+Enter path of program executable: python "D:\foo\foo.py"   or   python Drag exe to window the path will appear
+  
+  script with output
+  windows - 
+    : start cmd /K python 'D:\foo\foo.py'
+  linux - 
+    : 
   
 For advance use -
 >launch -a <workspace_name>
