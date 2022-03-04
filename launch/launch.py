@@ -31,13 +31,13 @@ class handle:
         print(f'Launch file {build} created')
             
             
-    def launch(filename, env, sleep_time):
+    def launch(filename, env, sleep_time, exc):
         # launch function
         try:
             dic = data.read_(filename)
             print(f'Launching workspace - {env}')
             logo()
-            handle.run(dic, sleep_time)
+            handle.run(dic, sleep_time, exc)
         except FileNotFoundError:
             print(f'No Workspace named {env} found')
             handle.ls()
@@ -80,14 +80,15 @@ class handle:
             
     
     @staticmethod                
-    def run(dic, sleep_time):
+    def run(dic, sleep_time, exc=''):
         # Run programs from launch file
+        sleep_time = 0 if sleep_time is None else sleep_time
         for _ in dic:
             try:
-                subprocess.Popen(dic[_], shell=True)
-                print(f'Executed {_}')
-                time.sleep(sleep_time)
-            except Exception:
-                           print(Exception)
-                           print(f'Could not open {_}:{dic[_]}. Check if path/file_name is correct')
-                    
+                if exc != _:
+                    subprocess.Popen(dic[_], shell=True)
+                    print(f'Executed {_}')
+                    time.sleep(sleep_time)
+            except Exception as Error:
+                print(Error)
+                print(f'Could not open {_}:{dic[_]}. Check if path/file_name is correct')

@@ -7,7 +7,7 @@ from .utils.utils import PATH
 CURRENT_PATH = PATH()
 
 
-def initalise(build=None, add=False, show_list=None, time=0, remove=None, purge=None, env=None, ls=False):
+def initalise(build=None, add=False, show_list=None, time=None, exc=None, remove=None, purge=None, env=None, ls=False):
     # Initalise function to call other functions based on arguments
     
     if build:
@@ -43,7 +43,7 @@ def initalise(build=None, add=False, show_list=None, time=0, remove=None, purge=
     if env:
         # Run environment
         filename = f'{CURRENT_PATH}\{env}'
-        handle.launch(filename, env, time)
+        handle.launch(filename, env, time, exc)
         
     if ls:
         # List all availabel work environments
@@ -61,6 +61,8 @@ def main():
     
     parser.add_argument('-t', '--time', help='Time in seconds between execution', type=int, metavar='')
     
+    parser.add_argument('-e', '--exclude', help='Run program except', type=str, metavar='')
+    
     parser.add_argument('-remove', '--remove', help='Remove program from given work environment', type=str, metavar='')
     
     parser.add_argument('-purge', '--purge', help='delete the work environment file', type=str, metavar='')
@@ -75,6 +77,7 @@ def main():
               add=args.add, 
               show_list=args.show, 
               time=args.time,
+              exc=args.exclude,
               remove=args.remove, 
               purge=args.purge, 
               env=args.env, 
