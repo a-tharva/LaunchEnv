@@ -26,6 +26,7 @@ class data:
             dic.update({key:value})
             f.seek(0)
             json.dump(dic, f, indent=2)
+            print(f'Program {key} added to launch file')
 
     
     def remove_element_(filename, item_key):
@@ -35,7 +36,9 @@ class data:
             dic = dic.copy()
             if item_key not in dic:
                 print(f'Program {item_key} not found')
+                return
             del dic[item_key]
+            print('Program removed')
             
         with open (filename + '.json', 'w') as f:
             json.dump(dic, f)
