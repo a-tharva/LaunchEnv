@@ -13,8 +13,8 @@ class handle:
     
     def add(filename):
         # Add to launch file
-        name = input('Enter name of program to add this environment: ')
-        path = input('Enter path of program executable: ')
+        name = input('Enter name of program to add this launch file: ')
+        path = input('Enter path of program launch file: ')
         try:
             data.add_(filename, name, path)
         except Exception as Error:
@@ -39,23 +39,24 @@ class handle:
             logo()
             handle.run(dic, sleep_time, exc)
         except FileNotFoundError:
-            print(f'No Workspace named {env} found')
+            print(f'No launch file named {env} found')
             handle.ls()
     
     
     def purge(filename, purge):
         # Delete launch file
         if os.path.exists(filename):
-            verify = input(f'Confirm to delete {purge} environment [y/n]: ')
+            verify = input(f'Confirm to delete {purge} launch file [y/n]: ')
             if verify == 'y':
                 os.remove(filename)
+                print(f'Purged {purge} launch file')
         else:
-            print(f'No environment named {purge}.')
+            print(f'No launch file named {purge}.')
     
     
     def remove_element(filename):
         # Remove element from launch file 
-        item = input('Enter program name to delete from environment: ')
+        item = input('Enter program name to delete from launch file: ')
         data.remove_element_(filename, item)
     
     
@@ -63,17 +64,17 @@ class handle:
         # List all elements from launch file
         try:
             dic = data.read_(filename)
-            print(f'Workspace {show_list}')
+            print(f'launch file {show_list}')
             for _ in dic:
                 print(f' {_}: {dic[_]}')
         except FileNotFoundError:
-            print(f'No Workspace named {show_list} found')
+            print(f'No launch file named {show_list} found')
 
     
     @staticmethod
     def ls():
         # List all launch environments
-        print('Here is list of available workspace:')
+        print('Here is list of available launch files:')
         for _ in os.listdir(CURRENT_PATH):
             if _.endswith('.json'):
                 print(' ',_.replace('.json',''))
