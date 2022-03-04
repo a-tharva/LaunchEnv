@@ -3,6 +3,8 @@ v0.0.4
 
 ## About
 Command line application created in python to execute your programs or scripts in one command. <br> 
+Launch your work/misc environment with just one command.<br>
+Programs and commands are stoerd in json launch file.
 - PATH for data storage is given in /launch/utils/utils.py 
 
 ## Installation
@@ -61,8 +63,8 @@ Enter path of program executable: "D:\foo\opera.exe" -incognito  or   Drag exe t
 | |__| (_| | |_| | | | | (__| | | | |___| | | \ V /
 |_____\__,_|\__,_|_| |_|\___|_| |_|_____|_| |_|\_/
 
-launch [-h] [-build] [-a] [-sh] [-t] [-e] [-remove] [-run] [-ls]
-       [-purge]
+usage: launch [-h] [-build] [-a] [-sh] [-t] [-e] [-remove] [-run] [-ls]
+              [-purge]
 
 Run environment
 
