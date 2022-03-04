@@ -9,7 +9,12 @@ Change Log
 -------------------
 - Changed structure
 
-0.0.3 
+0.0.3 ()
 -------------------
 - Added function for different os
 - Changed file path for launch files 
+
+0.0.4 ()
+-------------------
+- Added function for sleep time between execution
+- Addef function to exclude program at launch time

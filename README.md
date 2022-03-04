@@ -50,7 +50,7 @@ For advance use -
 Enter name of program to add this environment: opera incognito
 Enter path of program executable: "D:\foo\opera.exe" -incognito  or   Drag exe to window the path will appear -incognito
   
->launch -env <workspace_name>
+>launch -run <workspace_name>
 ```
 
 ## Usage
@@ -61,19 +61,22 @@ Enter path of program executable: "D:\foo\opera.exe" -incognito  or   Drag exe t
 | |__| (_| | |_| | | | | (__| | | | |___| | | \ V /
 |_____\__,_|\__,_|_| |_|\___|_| |_|_____|_| |_|\_/
 
-launch [-h] [-build] [-a] [-s] [-remove] [-purge] [-env] [-ls]
+launch [-h] [-build] [-a] [-sh] [-t] [-e] [-remove] [-run] [-ls]
+       [-purge]
 
 Run environment
 
 optional arguments:
   -h, --help           show this help message and exit
-  -build , --build     Create new work environment/workspace
-  -a , --add           Add program to existing work environment
-  -s , --show          Show all program in given work environment
-  -remove , --remove   Remove program from given work environment
-  -purge , --purge     delete the work environment file
-  -env , --env         Run environment
-  -ls, --list          List all available work environments
+  -build , --build     Create new work environment/launch file
+  -a , --add           Add program to existing launch file
+  -sh , --show         Show all program in launch file
+  -t , --time          Time in seconds between execution
+  -e , --exclude       Run program except
+  -remove , --remove   Remove program from given launch file
+  -run , --run         Run environment
+  -ls, --list          List all available launch file
+  -purge , --purge     delete the work launch file
 ```
 
 ## Development
