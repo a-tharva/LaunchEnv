@@ -81,7 +81,6 @@ optional arguments:
 
 ## Development
 Still working on this project.<br>
-- The Script functionality is provided but it does not open new terminal window.<br>
 - Next version will ask path to store the launch data.<br> 
 <!-- -->
 
