@@ -1,4 +1,5 @@
 import os
+import time
 import subprocess
 
 from .environment.environment import data
@@ -30,13 +31,13 @@ class handle:
         print(f'Launch file {build} created')
             
             
-    def launch(filename, env):
+    def launch(filename, env, sleep_time):
         # launch function
         try:
             dic = data.read_(filename)
             print(f'Launching workspace - {env}')
             logo()
-            handle.run(dic)
+            handle.run(dic, sleep_time)
         except FileNotFoundError:
             print(f'No Workspace named {env} found')
             handle.ls()
@@ -79,11 +80,14 @@ class handle:
             
     
     @staticmethod                
-    def run(dic):
+    def run(dic, sleep_time):
         # Run programs from launch file
         for _ in dic:
             try:
-                subprocess.Popen(dic[_])
+                subprocess.Popen(dic[_], shell=True)
                 print(f'Executed {_}')
+                time.sleep(sleep_time)
             except Exception:
-                print(f'Could not open {_}:{dic[_]}. Check if path/file_name is correct')
+                           print(Exception)
+                           print(f'Could not open {_}:{dic[_]}. Check if path/file_name is correct')
+                    

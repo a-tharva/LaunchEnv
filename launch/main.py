@@ -7,7 +7,7 @@ from .utils.utils import PATH
 CURRENT_PATH = PATH()
 
 
-def initalise(build=None, add=False, show_list=None, remove=None, purge=None, env=None, ls=False):
+def initalise(build=None, add=False, show_list=None, time=0, remove=None, purge=None, env=None, ls=False):
     # Initalise function to call other functions based on arguments
     
     if build:
@@ -43,7 +43,7 @@ def initalise(build=None, add=False, show_list=None, remove=None, purge=None, en
     if env:
         # Run environment
         filename = f'{CURRENT_PATH}\{env}'
-        handle.launch(filename, env)
+        handle.launch(filename, env, time)
         
     if ls:
         # List all availabel work environments
@@ -53,25 +53,28 @@ def initalise(build=None, add=False, show_list=None, remove=None, purge=None, en
 def main():
     # Parser arguments
     parser = argparse.ArgumentParser(description='Run environment')
-    parser.add_argument('-build', '--build', help='Create new work environment/workspace', 
-                         type=str, metavar='')
-    parser.add_argument('-a', '--add', help='Add program to existing work environment', 
-                        type=str, metavar='')
-    parser.add_argument('-s', '--show', help='Show all program in given work environment', 
-                        type=str, metavar='')
-    parser.add_argument('-remove', '--remove', help='Remove program from given work environment', 
-                        type=str, metavar='')
-    parser.add_argument('-purge', '--purge', help='delete the work environment file', 
-                        type=str, metavar='')
-    parser.add_argument('-env', '--env', help='Run environment', 
-                        type=str, metavar='')
-    parser.add_argument('-ls', '--list', help='List all available work environments', 
-                        action='store_true')
+    parser.add_argument('-build', '--build', help='Create new work environment/workspace', type=str, metavar='')
+    
+    parser.add_argument('-a', '--add', help='Add program to existing work environment', type=str, metavar='')
+    
+    parser.add_argument('-s', '--show', help='Show all program in given work environment', type=str, metavar='')
+    
+    parser.add_argument('-t', '--time', help='Time in seconds between execution', type=int, metavar='')
+    
+    parser.add_argument('-remove', '--remove', help='Remove program from given work environment', type=str, metavar='')
+    
+    parser.add_argument('-purge', '--purge', help='delete the work environment file', type=str, metavar='')
+    
+    parser.add_argument('-env', '--env', help='Run environment', type=str, metavar='')
+    
+    parser.add_argument('-ls', '--list', help='List all available work environments', action='store_true')
+    
     args = parser.parse_args()
     
     initalise(build=args.build, 
               add=args.add, 
               show_list=args.show, 
+              time=args.time,
               remove=args.remove, 
               purge=args.purge, 
               env=args.env, 
