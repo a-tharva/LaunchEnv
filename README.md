@@ -30,14 +30,14 @@ launch
 ```
 ## Use
 ```
->launch -build <workspace_name>
+>launch -build <environment_name>
   
->launch -a <workspace_name>
+>launch -a <environment_name>
 Enter name of program to add this environment: foo
 Enter path of program executable: "D:\foo\foo.exe"   or   Drag exe to window the path will appear
 
 For script -
->launch -a <workspace_name>
+>launch -a <environment_name>
 Enter name of program to add this environment: foo
 Enter path of program executable: python "D:\foo\foo.py"   or   python Drag exe to window the path will appear
   
@@ -48,11 +48,11 @@ Enter path of program executable: python "D:\foo\foo.py"   or   python Drag exe 
     : 
   
 For advance use -
->launch -a <workspace_name>
+>launch -a <environment_name>
 Enter name of program to add this environment: opera incognito
 Enter path of program executable: "D:\foo\opera.exe" -incognito  or   Drag exe to window the path will appear -incognito
   
->launch -run <workspace_name>
+>launch -run <environment_name>
 ```
 
 ## Usage
