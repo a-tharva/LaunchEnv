@@ -10,3 +10,6 @@ build/
 # txt
 *.txt
 !CHANGELOG.txt
+
+#Python
+test.py

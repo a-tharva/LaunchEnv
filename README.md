@@ -1,8 +1,10 @@
 # LaunchEnv
-v0.0.3
+v0.0.4
 
 ## About
 Command line application created in python to execute your programs or scripts in one command. <br> 
+Launch your work/misc environment with just one command.<br>
+Programs and commands are stoerd in json launch file.
 - PATH for data storage is given in /launch/utils/utils.py 
 
 ## Installation
@@ -37,14 +39,20 @@ Enter path of program executable: "D:\foo\foo.exe"   or   Drag exe to window the
 For script -
 >launch -a <workspace_name>
 Enter name of program to add this environment: foo
-Enter path of program executable: python "D:\foo\foo.exe"   or   python Drag exe to window the path will appear
+Enter path of program executable: python "D:\foo\foo.py"   or   python Drag exe to window the path will appear
+  
+  script with output
+  windows - 
+    : start cmd /K python 'D:\foo\foo.py'
+  linux - 
+    : 
   
 For advance use -
 >launch -a <workspace_name>
 Enter name of program to add this environment: opera incognito
 Enter path of program executable: "D:\foo\opera.exe" -incognito  or   Drag exe to window the path will appear -incognito
   
->launch -env <workspace_name>
+>launch -run <workspace_name>
 ```
 
 ## Usage
@@ -55,24 +63,26 @@ Enter path of program executable: "D:\foo\opera.exe" -incognito  or   Drag exe t
 | |__| (_| | |_| | | | | (__| | | | |___| | | \ V /
 |_____\__,_|\__,_|_| |_|\___|_| |_|_____|_| |_|\_/
 
-launch [-h] [-build] [-a] [-s] [-remove] [-purge] [-env] [-ls]
+usage: launch [-h] [-build] [-a] [-sh] [-t] [-e] [-remove] [-run] [-ls]
+              [-purge]
 
 Run environment
 
 optional arguments:
   -h, --help           show this help message and exit
-  -build , --build     Create new work environment/workspace
-  -a , --add           Add program to existing work environment
-  -s , --show          Show all program in given work environment
-  -remove , --remove   Remove program from given work environment
-  -purge , --purge     delete the work environment file
-  -env , --env         Run environment
-  -ls, --list          List all available work environments
+  -build , --build     Create new work environment/launch file
+  -a , --add           Add program to existing launch file
+  -sh , --show         Show all program in launch file
+  -t , --time          Time in seconds between execution
+  -e , --exclude       Run program except
+  -remove , --remove   Remove program from given launch file
+  -run , --run         Run environment
+  -ls, --list          List all available launch file
+  -purge , --purge     delete the work launch file
 ```
 
 ## Development
 Still working on this project.<br>
-- The Script functionality is provided but it does not open new terminal window.<br>
 - Next version will ask path to store the launch data.<br> 
 <!-- -->
 
@@ -84,9 +94,9 @@ If you have a suggestion that would make this better, please fork the repo and c
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+2. Create your Feature Branch (`git checkout -b feature/Feature`)
+3. Commit your Changes (`git commit -m 'Add some Feature'`)
+4. Push to the Branch (`git push origin feature/Feature`)
 5. Open a Pull Request
 
 
