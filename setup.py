@@ -2,7 +2,7 @@ from pathlib import Path
 from setuptools import setup, find_packages
 import os
 
-VERSION = '0.0.4'
+VERSION = '0.0.5'
 DESCRIPTION = 'Launch all your programs and scripts with one command'
 
 this_directory = Path(__file__).parent

@@ -1,20 +1,20 @@
 Change Log
 ==========
 
-0.0.1 (28/12/2021)
+0.0.4 ()
 -------------------
-- First Release
-
-0.0.2 (26/1/2022)
--------------------
-- Changed structure
+- Added function for sleep time between execution
+- Addef function to exclude program at launch time
 
 0.0.3 ()
 -------------------
 - Added function for different os
 - Changed file path for launch files 
 
-0.0.4 ()
+0.0.2 (26/1/2022)
 -------------------
-- Added function for sleep time between execution
-- Addef function to exclude program at launch time
+- Changed structure
+
+0.0.1 (28/12/2021)
+-------------------
+- First Release
