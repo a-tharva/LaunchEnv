@@ -1,24 +1,29 @@
 from sys import platform
 
+
 def PATH():
     # To check current system
     if platform == 'win32':
-        path = 'C:\\launchfiles'
+        path = 'C:\\.launchfiles'
     elif platform == 'linux':
-        path = '/home/launchfiles'
+        path = '/home/.launchfiles'
     else:
-        path = 'C:\\launchfiles'
-        
+        path = 'C:\\.launchfiles'
+
     return path
 
 # For message box
+
+
 def border_msg(msg):
     row = len(msg)
-    h = ''.join(['+'] + ['-' *row] + ['+'])
-    result= h + '\n'"|"+msg+"|"'\n' + h
+    h = ''.join(['+'] + ['-' * row] + ['+'])
+    result = h + '\n'"|"+msg+"|"'\n' + h
     print(result)
-    
+
 # Menu logo
+
+
 def logo():
     print('''   
  _                           _     _____
