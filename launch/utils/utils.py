@@ -1,4 +1,13 @@
+from datetime import datetime
 from sys import platform
+
+
+def border_msg(msg):
+    # For message box
+    row = len(msg)
+    h = ''.join(['+'] + ['-' * row] + ['+'])
+    result = h + '\n'"|"+msg+"|"'\n' + h
+    print(result)
 
 
 def PATH():
@@ -12,19 +21,14 @@ def PATH():
 
     return path
 
-# For message box
 
-
-def border_msg(msg):
-    row = len(msg)
-    h = ''.join(['+'] + ['-' * row] + ['+'])
-    result = h + '\n'"|"+msg+"|"'\n' + h
-    print(result)
-
-# Menu logo
-
+def log(msg: str) -> None:
+    f = open(f'{PATH()}/log.txt', 'a+')
+    f.write(f'{datetime.now().strftime("%Y-%m-%d %H:%M")}: {msg}\n')
+    f.close()
 
 def logo():
+    # Menu logo
     print('''   
  _                           _     _____
 | |    __ _ _   _ _ __   ___| |__ | ____|_ ____   __

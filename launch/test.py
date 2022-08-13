@@ -1,6 +1,6 @@
-#import subprocess
-#
-#subprocess.Popen(f'C:\Windows\system32\calc.exe')
+# import subprocess
+
+# subprocess.Popen(f'sC:\Windows\system32\calc.exe')
 #
 #
 #

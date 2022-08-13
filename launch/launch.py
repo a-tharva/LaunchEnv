@@ -5,7 +5,7 @@ import time
 import subprocess
 
 from .environment.environment import data
-from .utils.utils import PATH, logo
+from .utils.utils import PATH, log, logo
 
 CURRENT_PATH = PATH()
 
@@ -84,13 +84,16 @@ class handle:
         for _ in dic:
             try:
                 if exc != _:
-                    subprocess.Popen(dic[_], shell=True)
-                    print(f'Executed {_}')
+                    print(f'{_}:', end='')
+                    call = subprocess.Popen(dic[_], shell=True)
+                    call.wait()
+                    if call.returncode != 0:
+                        print(call.returncode, call.communicate()[0])
+                        log(call.communicate()[0])
+                    else:
+                        print(f'Executed {_}')
                     time.sleep(sleep_time)
-            except Exception as Error:
-                f = open(f'{PATH}/log.txt', 'a+')
-                f.write(f'{datetime.now().strftime("%Y-%m-%d %H:%M")}: {Error}\n')
-                print(Error)
+            except FileNotFoundError as Error:
+                log(Error)
                 print(
                     f'Could not open {_}:{dic[_]}. Check if path/file_name is correct')
-                f.close()
