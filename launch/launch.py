@@ -84,10 +84,9 @@ class handle:
         for _ in dic:
             try:
                 if exc != _:
-                    print(f'{_}:', end='')
+                    print(f'{_}: ', end='')
                     call = subprocess.Popen(dic[_], shell=True)
-                    call.wait()
-                    if call.returncode != 0:
+                    if call.returncode != 0 and call.returncode != None:
                         print(call.returncode, call.communicate()[0])
                         log(call.communicate()[0])
                     else:

@@ -27,6 +27,7 @@ def log(msg: str) -> None:
     f.write(f'{datetime.now().strftime("%Y-%m-%d %H:%M")}: {msg}\n')
     f.close()
 
+
 def logo():
     # Menu logo
     print('''   
